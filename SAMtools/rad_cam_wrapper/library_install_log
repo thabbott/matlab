@@ -1,0 +1,97 @@
+: 1533998772:0;gunzip hdf5-1.10.2.tar.gz
+: 1533998774:0;ls
+: 1533998792:0;tar -xvf hdf5-1.10.2.tar
+: 1533998795:0;ls
+: 1533998805:0;dh -sh hdf5-1.10.2
+: 1533998817:0;du -sh hdf5-1.10.2
+: 1533998829:0;rm hdf5-1.10.2.tar
+: 1533998866:0;cd hdf5-1.10.2
+: 1533998867:0;ls
+: 1533998875:0;less README.txt
+: 1533998892:0;less release_docs/INSTALL
+: 1533999038:0;cd ..
+: 1533999038:0;ls
+: 1533999046:0;unzip zlib1211.zip 
+: 1533999049:0;ls
+: 1533999054:0;rm zlib1211.zip
+: 1533999056:0;cd zlib-1.2.11
+: 1533999056:0;ls
+: 1533999063:0;vim README
+: 1533999084:0;vim Makefile.in
+: 1533999127:0;./configure
+: 1533999134:0;vim Makefile.in
+: 1533999142:0;make test
+: 1533999157:0;vim Makefile.in
+: 1533999181:0;ls
+: 1533999263:0;ZDIR=`pwd`
+: 1533999268:0;echo $ZDIR
+: 1533999277:0;make install --prefix=$ZDIR
+: 1533999283:0;vim Makefile.in
+: 1533999291:0;make install prefix=$ZDIR
+: 1533999318:0;ls
+: 1533999321:0;cd ..
+: 1533999321:0;ls
+: 1533999324:0;cd hdf5-1.10.2
+: 1533999324:0;ls
+: 1533999332:0;less release_docs/INSTALL
+: 1533999438:0;cd ../zlib-1.2.11
+: 1533999438:0;ls
+: 1533999488:0;CC=/usr/local/MATLAB/R2016b/bin/mex ./configure
+: 1533999513:0;./configure
+: 1533999518:0;ls
+: 1533999522:0;cd ../hdf5-1.10.2
+: 1533999522:0;ls
+: 1533999531:0;less release_docs/INSTALL
+: 1533999547:0;H5DIR=`pwd`
+: 1533999588:0;./configure --with-zlib=${ZDIR} --prefix=${H5DIR}
+: 1533999632:0;make check
+: 1534000108:0;ls /etc/ld.so.conf
+: 1534000113:0;less /etc/ld.so.conf
+: 1534000120:0;less /etc/ld.so.conf.d
+: 1534000142:0;less /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+: 1534000159:0;less /etc/ld.so.conf.d/libc.conf
+: 1534000290:0;cd ..
+: 1534000291:0;ls
+: 1534000294:0;make
+: 1534000303:0;make clean
+: 1534000305:0;vim Makefile
+: 1534000315:0;make
+: 1534002990:0;cd ..
+: 1534002991:0;ls
+: 1534003026:0;unzip netcdf-c-4.6.1.zip
+: 1534003031:0;rm netcdf-c-4.6.1.zip
+: 1534003032:0;cd netcdf-c-4.6.1
+: 1534003033:0;ls
+: 1534003047:0;echo $ZDIR
+: 1534003053:0;echo $H5DIR
+: 1534003096:0;cd ..
+: 1534003101:0;mkdir netcdfc-4.6.1
+: 1534003103:0;cd ..
+: 1534003104:0;cd -
+: 1534003106:0;cd netcdf-c-4.6.1
+: 1534003123:0;NCDIR=/data/thabbott/src/MATLAB_SAM_CAM/netcdfc-4.6.1
+: 1534003173:0;CPPFLAGS=-I${H5DIR}/include LDFLAGS=-L${H5DIR}/lib ./configure --prefix=${NCDIR}
+: 1534003189:0;cd ../hdf5-1.10.2
+: 1534003199:0;make install
+: 1534003208:0;cd ../netcdf-c-4.6.1
+: 1534003228:0;cd ../zlib-1.2.11
+: 1534003237:0;ls
+: 1534003242:0;ls lib
+: 1534003245:0;ls bin
+: 1534003250:0;cd ..
+: 1534003253:0;cd netcdf-c-4.6.1
+: 1534003254:0;ls
+: 1534003258:0;make check
+: 1534005931:0;make install
+: 1534005946:0;nc-config --help
+: 1534005955:0;nc-config --flibs
+: 1534006074:0;cd ..
+: 1534006075:0;ls
+: 1534006083:0;unzip netcdf-fortran-4.4.4.zip
+: 1534006088:0;cd netcdf-fortran-4.4.4
+: 1534006136:0;export LD_LIBRARY_PATH=${NCDIR}/lib:${LD_LIBRARY_PATH}
+: 1534006148:0;mkdir ../netcdff-4.4.4
+: 1534006160:0;NFDIR=/data/thabbott/src/MATLAB_SAM_CAM/netcdff-4.4.4
+: 1534006220:0;CPPFLAGS=-I${NCDIR}/include LDFLAGS=-L${NCDIR}/lib ./configure --prefix=${NFDIR}
+: 1534006233:0;make check
+: 1534006327:0;make install

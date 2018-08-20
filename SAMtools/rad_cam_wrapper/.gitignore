@@ -1,0 +1,5 @@
+hdf5*
+zlib*
+netcdf*
+RUNDATA
+.fuse_hidden*
