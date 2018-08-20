@@ -11,6 +11,10 @@ function fig = standard_figure(ftype)
             set(fig, 'Position', [1 1 8 6], 'PaperSize', [8 6]);
         case 'medium-wide'
             set(fig, 'Position', [1 1 12 6], 'PaperSize', [12 6]);
+        case 'medium-narrow'
+            set(fig, 'Position', [1 1 6 6], 'PaperSize', [6 6]);
+        case 'wide'
+            set(fig, 'Position', [1 1 12 6], 'PaperSize', [12 6]);
         case 'half-page'
             set(fig, 'Position', [1 1 3.75 2.82], 'PaperSize', [3.75 2.82]);
         case 'half-page-short'
