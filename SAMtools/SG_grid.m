@@ -95,6 +95,13 @@ function grid = SG_grid(x, y, z, p)
     rhow(end) = 2*rhow(end-1) - rhow(end-2);
     rhow(1) = 2*rhow(2) - rhow(3);
     rho = 0.5*(rhow(2:end) + rhow(1:end-1));
+    
+    % Compute interface hydrostatic pressures
+    presi = zeros(length(zi),1);
+    presi(1) = 1e2*p(1) + SAM_g*rho(1)*(z(1) - zi(1));
+    for ii = 2:length(presi)
+       presi(ii) = presi(ii-1) - SAM_g*rho(ii-1)*(zi(ii) - zi(ii-1));
+    end
 
     grid = struct;
     grid.nzm = length(z);
@@ -114,6 +121,7 @@ function grid = SG_grid(x, y, z, p)
     grid.rho = rho;
     grid.rhoi = rhow;
     grid.p = p;
+    grid.pi = presi;
     grid.pp = repmat(1e2*grid.p, [1 length(y) length(x)]);
 
 end

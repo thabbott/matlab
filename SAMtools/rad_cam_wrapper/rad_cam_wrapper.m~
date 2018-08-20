@@ -40,9 +40,7 @@ params.doradhomo = 1;
 params.zenith_angle = 42.2;
 params.solar_constant = 554.0;
 
-% Compare qrad from simulation and offline calculation
-grid.qrad_online = SG_addVar(dat.qrad, 's');
-grid.qrad_offline = SG_rad_cam(grid, params);
+
 
 %%
 

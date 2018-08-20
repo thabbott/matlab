@@ -15,11 +15,12 @@
 % A 3D array containing data read from a SAM output file. The dimensions
 % are assumed to be (x, y, z).
 %
-% *loc - 'u', 'v', 'w', 's', 'rho', 'rhoi':*
+% *loc - 'u', 'v', 'w', 's', 'rho', 'rhoi', 'u2d', 'v2d', 's2d':*
 % Location of the variable on the grid-- at u locations, v locations, w
 % locations, or s locations, or reference densities as scalar ('rho') or
 % vertical velocity ('rhoi') levels. This determines how data is exchanged on
-% boundaries before returning the new array.
+% boundaries before returning the new array. '2d' suffix indicates a
+% horizontal two-d slice.
 %
 %%% Output Arguments
 %
@@ -58,6 +59,19 @@ function fld = SG_addVar(var, loc)
             fld = zeros(nz+1, 1);
             fld(1:nz) = squeeze(var(1,1,:));
             fld(end) = 2*fld(end-1) - fld(end-2);
+        case 'u2d'
+            fld = zeros(nx+1, ny);
+            fld(1:nx,:) = var;
+            fld(nx+1,:) = var(1,:);
+            fld = permute(fld, [2 1]);     
+        case 'v2d'
+            fld = zeros(nx, ny+1);
+            fld(:,1:ny) = var;
+            fld(:,ny+1) = var(:,1);
+            fld = permute(fld, [2 1]);     
+        case 's2d'
+            fld = var;
+            fld = permute(fld, [2 1]);     
         otherwise
             error('SG_addVar: unknown loc value %s', lower(loc))
     end

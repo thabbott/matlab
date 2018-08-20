@@ -1,5 +1,7 @@
-hdf5*
-zlib*
-netcdf*
+hdf5-1.10.2
+zlib-1.2.11
+netcdf-c-4.6.1
+netcdf-fortran-4.4.4
 RUNDATA
+*.m~
 .fuse_hidden*
