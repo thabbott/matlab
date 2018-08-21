@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export \
-LD_LIBRARY_PATH=/data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdf-c/lib:/data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdf-fortran/lib:${LD_LIBRARY_PATH}
