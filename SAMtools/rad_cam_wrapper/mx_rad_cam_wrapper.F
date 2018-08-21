@@ -424,10 +424,6 @@ C=========================================================================
 C=========================================================================
 C       Transfer outputs
         ip = mexPrintf("Transferring outputs\n")
-        write(str, *) zi(2)
-        ip = mexPrintf("qrad = "//str//"K/day\n")
-        write(str, *) zi(1)
-        ip = mexPrintf("qrad = "//str//"K/day\n")
 C       qrad
         ip = 1
         dims(1) = nx

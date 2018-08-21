@@ -167,25 +167,30 @@ subroutine rad_full()
      !bloss  subroutine initialize_radbuffer
      !bloss  inputs:  none
      !bloss  ouptuts: none (allocates and initializes abs/ems arrays)
+     mpf = mexPrintf("\t\tcall initialize_radbuffer\n")
      call initialize_radbuffer()
 
      !bloss  subroutine shr_orb_params
      !bloss  inputs:  iyear, log_print
      !bloss  ouptuts: eccen, obliq, mvelp, obliqr, lambm0, mvelpp
+     mpf = mexPrintf("\t\tcall shr_orb_params\n")
      call shr_orb_params(iyear    , eccen  , obliq , mvelp     ,     &
            &               obliqr   , lambm0 , mvelpp, .false.)
 
      !bloss  subroutine radaeini
      !bloss  inputs:  pstdx (=1013250 dynes/cm2), mwdry (mwair) and mwco2.
      !bloss  ouptuts: none (sets up lookup tables for abs/ems computat.)
+     mpf = mexPrintf("\t\tcall radaeini\n")
      call radaeini( 1.013250e6_r4, mwdry, mwco2 )
 
      !bloss  subroutine aer_optics_initialize
      !bloss  inputs:  none
      !bloss  ouptuts: none (sets up lookup tables for aerosol properties)
+     mpf = mexPrintf("\t\tcall aer_optics_initialize\n")
      call aer_optics_initialize()
 
      ! sets up initial mixing ratios of trace gases.
+     mpf = mexPrintf("\t\tcall tracesini\n")
      call tracesini()
 
      if(nrestart.eq.0) then
@@ -304,8 +309,8 @@ subroutine rad_full()
   ! they need not to be recalculated on every call of radclw() for
   ! efficiency reasons.
 
-!tha  if(initrad.or.mod(nstep,nrad_call).eq.0) then
-    if (.true.) then
+!tha    if(initrad.or.mod(nstep,nrad_call).eq.0) then
+    if (initrad) then
 
      mpf = mexPrintf("\tBRANCH TAKEN: initrad .or. mod(nstep, nrad_call)\n")
 
@@ -766,7 +771,6 @@ subroutine rad_full()
 
         end do
      end do
-     if (qrad(1,1,1) .eq. qrad(1,2,1)) mpf = mexPrintf("QRAD\n")
 
      tabs_rad(:,:,:)=0.
      qv_rad(:,:,:)=0.
