@@ -2,6 +2,7 @@ hdf5
 zlib
 netcdf-c
 netcdf-fortran
+setpath.sh
 RUNDATA
 *.m~
 .fuse_hidden*
