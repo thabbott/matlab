@@ -37,6 +37,7 @@ C       Local variables
         mwPointer nel
         mwSize, parameter :: ndim = 3
         mwSize dims(ndim)
+        character(20) :: str
 
 C       Check number of arguments
         if (.not. nrhs .eq. 24) then
@@ -419,6 +420,8 @@ C=========================================================================
 C=========================================================================
 C       Transfer outputs
         ip = mexPrintf("Transferring outputs\n")
+        write(str, *) 86400.*qrad(1,1,1)
+        ip = mexPrintf("qrad = "//str//"K/day\n")
 C       qrad
         ip = 1
         dims(1) = nx

@@ -1,9 +1,9 @@
 MEX = /usr/local/MATLAB/R2016b/bin/mex
-INCLUDE = -I/data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdff-4.4.4/include
-LIBC = -L/data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdfc-4.6.1/lib
-LIBF = -L/data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdff-4.4.4/lib
-NCCLIB = /data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdfc-4.6.1/lib
-NCFLIB = /data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdff-4.4.4/lib
+INCLUDE = -I/data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdf-fortran/include
+LIBC = -L/data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdf-c/lib
+LIBF = -L/data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdf-fortran/lib
+NCCLIB = /data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdf-c/lib
+NCFLIB = /data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdf-fortran/lib
 
 wrapper:
 	ln -s RAD_CAM/*.f90 .

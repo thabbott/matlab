@@ -304,7 +304,8 @@ subroutine rad_full()
   ! they need not to be recalculated on every call of radclw() for
   ! efficiency reasons.
 
-  if(initrad.or.mod(nstep,nrad_call).eq.0) then
+!tha  if(initrad.or.mod(nstep,nrad_call).eq.0) then
+    if (.true.) then
 
      mpf = mexPrintf("\tBRANCH TAKEN: initrad .or. mod(nstep, nrad_call)\n")
 
@@ -734,7 +735,7 @@ subroutine rad_full()
 
               solin    = 1.e-3*solin
            else
-               mpf = mexPrintf("\tBRANCH NOT TAKEN: doshortwave\n")
+               if (i+j.eq.2) mpf = mexPrintf("\tBRANCH NOT TAKEN: doshortwave\n")
            endif
 
            do k=1,nzm
@@ -788,7 +789,7 @@ subroutine rad_full()
    ! Homogenize radiation:
 
      if(doradhomo) then    
-        if (i+j.eq.2) mpf = mexPrintf("\tBRANCH TAKEN: doradhomo\n")
+        mpf = mexPrintf("\tBRANCH TAKEN: doradhomo\n")
         factor = 1./dble(nx*ny)
         do k=1,nzm
           qradz(k) = 0.
@@ -813,7 +814,7 @@ subroutine rad_full()
         end do
 
      else
-        if (i+j.eq.2) mpf = mexPrintf("\tBRANCH NOT TAKEN: doradhomo\n")
+        mpf = mexPrintf("\tBRANCH NOT TAKEN: doradhomo\n")
      end if
 
   else

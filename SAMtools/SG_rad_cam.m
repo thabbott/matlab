@@ -46,7 +46,7 @@ function qrad = SG_rad_cam(grid, params)
     qci = check_3d_field(grid, 'qci');
     latitude = check_2d_field(grid, 'latitude');
     longitude = check_2d_field(grid, 'longitude');
-    sstxy = check_2d_field(grid, 'sst');
+    sstxy = check_2d_field(grid, 'sst') - 300;
     day = check_param(params, 'day');
     day0 = check_param(params, 'day0');
     dt = check_param(params, 'dt');
@@ -97,7 +97,7 @@ function qrad = SG_rad_cam(grid, params)
         qci);
     
     % Return as SAM variable
-    qrad = SG_addVar(qrad, 's');
+    qrad = SG_addVar(86400*qrad, 's');
 
 end
 
