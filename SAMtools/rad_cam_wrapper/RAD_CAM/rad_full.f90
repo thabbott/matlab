@@ -581,6 +581,7 @@ subroutine rad_full()
               flut     = 1.e-3*flut
               flutc    = 1.e-3*flutc
            else
+               qrl = qrl*0.0
                if (i+j.eq.2) mpf = mexPrintf("\tBRANCH NOT TAKEN: dolongwave\n")
            endif
 
@@ -765,6 +766,7 @@ subroutine rad_full()
 
         end do
      end do
+     if (qrad(1,1,1) .eq. qrad(1,2,1)) mpf = mexPrintf("QRAD\n")
 
      tabs_rad(:,:,:)=0.
      qv_rad(:,:,:)=0.

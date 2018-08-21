@@ -345,6 +345,7 @@ C       tabs
             do jj = 1,ny
                 do ii = 1,nx
                     tabs(ii,jj,kk) = real(dparr(ll),4)
+                    ll = ll+1
                 enddo
             enddo
         enddo
@@ -365,6 +366,7 @@ C       qv
             do jj = 1,ny
                 do ii = 1,nx
                     qv(ii,jj,kk) = real(dparr(ll),4)
+                    ll = ll+1
                 enddo
             enddo
         enddo
@@ -385,6 +387,7 @@ C       qcl
             do jj = 1,ny
                 do ii = 1,nx
                     qcl(ii,jj,kk) = real(dparr(ll),4)
+                    ll = ll+1
                 enddo
             enddo
         enddo
@@ -405,6 +408,7 @@ C       qci
             do jj = 1,ny
                 do ii = 1,nx
                     qci(ii,jj,kk) = real(dparr(ll),4)
+                    ll = ll+1
                 enddo
             enddo
         enddo
@@ -420,7 +424,9 @@ C=========================================================================
 C=========================================================================
 C       Transfer outputs
         ip = mexPrintf("Transferring outputs\n")
-        write(str, *) 86400.*qrad(1,1,1)
+        write(str, *) zi(2)
+        ip = mexPrintf("qrad = "//str//"K/day\n")
+        write(str, *) zi(1)
         ip = mexPrintf("qrad = "//str//"K/day\n")
 C       qrad
         ip = 1
