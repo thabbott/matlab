@@ -16,11 +16,11 @@
 % variables are 'tabs' (absolute temperature, K), 'qv' 
 % (specific humidity, kg/kg), 'qcl' (cloud water, kg/kg), 'qci'
 % (cloud ice, kg/kg), 'latitude' (2d latitude), 'longitude' (2d longitude),
-% and 'sst' (2d sea surface temperature, K).
+% 'sst' (2d sea surface temperature, K), and 'time' (current model Julian day).
 %
 % *params - struct of miscellaneous parameters:*
 % Additional parameters required by CAM routines but not provided by
-% SG_grid. Must include 'day' (Julian day at current time step), 'day0'
+% SG_grid. Must include 'day0'
 % (Julian day at simulation start), 'dt' (model time step), 'nrad' (number
 % of time steps per radiation call), 'doperpetual', 'ocean', 'dolongwave',
 % 'doshortwave', 'doseasons', 'dosolarconstant', 'doradhomo' (all SAM
@@ -47,7 +47,7 @@ function qrad = SG_rad_cam(grid, params)
     latitude = check_2d_field(grid, 'latitude');
     longitude = check_2d_field(grid, 'longitude');
     sstxy = check_2d_field(grid, 'sst') - 300;
-    day = check_param(params, 'day');
+    day = check_scalar(grid, 'time');
     day0 = check_param(params, 'day0');
     dt = check_param(params, 'dt');
     nrad = check_param(params, 'nrad');
@@ -112,6 +112,14 @@ end
 function field = check_2d_field(grid, fld)   
     if isfield(grid, fld)
         field = permute(grid.(fld), [2 1]);
+    else
+        error(['SG_rad_cam:no_' fld], ['Field ' fld ' not in grid']);
+    end
+end
+
+function field = check_scalar(grid, fld)   
+    if isfield(grid, fld)
+        field = grid.(fld);
     else
         error(['SG_rad_cam:no_' fld], ['Field ' fld ' not in grid']);
     end
