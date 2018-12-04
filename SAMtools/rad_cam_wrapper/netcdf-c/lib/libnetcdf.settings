@@ -1,0 +1,38 @@
+# NetCDF C Configuration Summary
+==============================
+
+# General
+-------
+NetCDF Version:		4.6.1
+Configured On:		Tue Aug 21 14:20:39 EDT 2018
+Host System:		x86_64-pc-linux-gnu
+Build Directory: 	/data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdf-c-4.6.1
+Install Prefix:         /data/thabbott/matlab/SAMtools/rad_cam_wrapper/netcdf-c
+
+# Compiling Options
+-----------------
+C Compiler:		/usr/bin/gcc
+CFLAGS:			
+CPPFLAGS:		-I/data/thabbott/matlab/SAMtools/rad_cam_wrapper/hdf5/include
+LDFLAGS:		-L/data/thabbott/matlab/SAMtools/rad_cam_wrapper/hdf5/lib
+AM_CFLAGS:		
+AM_CPPFLAGS:		
+AM_LDFLAGS:		
+Shared Library:		yes
+Static Library:		yes
+Extra libraries:	-lhdf5_hl -lhdf5 -lm -lz -lcurl 
+
+# Features
+--------
+NetCDF-2 API:		yes
+HDF4 Support:		no
+NetCDF-4 API:		yes
+NC-4 Parallel Support:	no
+PNetCDF Support:	no
+DAP2 Support:		yes
+DAP4 Support:		yes
+Diskless Support:	yes
+MMap Support:		no
+JNA Support:		no
+CDF5 Support:		yes
+ERANGE fill Support:	no
